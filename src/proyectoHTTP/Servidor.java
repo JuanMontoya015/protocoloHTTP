@@ -13,7 +13,7 @@ public class Servidor {
         	  Socket client = serverSocket.accept();
         	  Protocolo hilo = new Protocolo(client);
         	  new Thread(hilo).start();
-              
+              // PRUEBA
           }
       }
   }
