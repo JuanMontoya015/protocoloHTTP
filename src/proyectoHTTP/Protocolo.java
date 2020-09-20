@@ -77,6 +77,9 @@ public class Protocolo implements Runnable {
 		OutputStream clientOutput = client.getOutputStream();
 		clientOutput.write(("HTTP/1.1 \r\n" + status).getBytes());
 		System.out.println("HTTP/1.1" + status);
+		
+		clientOutput.write(("Cache-Control: max-age=1500").getBytes());
+		System.out.println("Cache-Control: max-age=1500");
 
 		clientOutput.write(("Content-Length: " + contentLength + "\r\n").getBytes());
 		System.out.println("Content-Length: " + contentLength);
@@ -91,7 +94,7 @@ public class Protocolo implements Runnable {
 		if (banderazo) {
 			while ((bytesRead = content.read(bloque)) == BLOCK_SIZE) {
 				clientOutput.write(bloque, 0, bytesRead);
-				System.out.println(new String(bloque));
+			//	System.out.println(new String(bloque));
 			}
 		} else {
 			clientOutput.write(bloque);
